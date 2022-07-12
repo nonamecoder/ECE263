@@ -1,2 +1,2 @@
 # ECE263
-ECE263 Code
+This repo contains code for ECE263 @ UMassD
