@@ -8,7 +8,7 @@
 		.NOLIST
 		.INCLUDE "M328PBDEF.INC"
                       
-.org 0x100;start from location 0x100
+.org 0x0100;start from location 0x100
 	
-			LDI R18,0x10   ;Load R18 with 0x00
-			STS 0x100, R18 ;Load 0x100 location with R18
+			LDI R18,0x0010   ;Load R18 with 0x0000
+			STS 0x0100, R18 ;Load 0x100 location with R18
