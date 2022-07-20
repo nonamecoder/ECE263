@@ -5,15 +5,6 @@
 ; Author : Ayyappan
 ;
 
-
-;
-; WriteToLocation.asm
-;
-; Created: 7/14/2022 12:24:47 AM
-; Author : Ayyappan
-;
-
-; Replace with your application code
 .INCLUDE "M328PBDEF.INC"
 RJMP START
 NOP
