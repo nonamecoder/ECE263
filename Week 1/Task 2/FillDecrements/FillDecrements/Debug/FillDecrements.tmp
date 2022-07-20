@@ -1,0 +1,31 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328PB"</DEVICE>
+ <WORKING_DIR>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\FillDecrements\FillDecrements\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\FillDecrements\FillDecrements\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\FillDecrements\FillDecrements\Debug\FillDecrements.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>FillDecrements.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>FillDecrements.map</FILE>
+  <FILE>FillDecrements.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <START><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\FillDecrements\FillDecrements\main.asm</FILE><LINE>20</LINE></START>
+  <loc><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\FillDecrements\FillDecrements\main.asm</FILE><LINE>16</LINE></loc>
+  <FillIncrements><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\FillDecrements\FillDecrements\main.asm</FILE><LINE>28</LINE></FillIncrements>
+  <FillLoop><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\FillDecrements\FillDecrements\main.asm</FILE><LINE>34</LINE></FillLoop>
+ </LABELS>
+</ASSEMBLER_INFO>
