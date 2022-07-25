@@ -1,77 +1,39 @@
-;.INCLUDE "M328PBDEF.INC"
-;RJMP START
-;NOP
-
-;.dseg; Data segment
-;.org 0x100;start from location 0x100
-;loc : .BYTE 0x100 ;start from location 0x100
-
-;.cseg
-
-;start:
-;	CLR r1
-;	CALL nextlfsr
-;	ldi YH, high(loc)
-;	ldi YL, low(loc)
-
-;	ST Y,R16
-
-;.EQU LFSR=0x19;
-.;EQU TAPS=0xB4;
-;nextlfsr:
-;	PUSH R17
-;	LDS R16, LFSR
-;	LDI R17,0
-;	SBRC R16,0
-;	LDI R17,TAPS
-;	LSR R16
-;	EOR R16,R17
-;	STS LFSR, R16
-;	POP R17
-;	RET
-
-.INCLUDE "M328PBDEF.INC"
-RJMP START
-NOP
-
-.dseg; Data segment
-.org 0x100;start from location 0x100
-loc : .BYTE 0x100 ;start from location 0x100
-
-.cseg
-
-start:
-	CLR r1
-	LDI r16, 0
-	ldi YH, high(loc)
-	ldi YL, low(loc)
-
-	ST Y,R16
-.equ TAPS = 0xB4
-nextlfsr:
-	push R17
-	lds R16, lfsr
-	ldi R17,0
-	sbrc R16, 0
-	ldi R17, TAPS
-	lsr R16
-	eor R16, R17
-	sts lfsr, R16
-	pop r17
-	ret
-
-;FillDecrements:
- ;   ldi Yh,high(loc)
- ;  ldi Yl,low(loc)
-;	ldi R17,0
-;	ldi R16,0
-;	st; Y+,R16
-;	FillLoop:
-;	DEC R17
-;	st y+,R17
 ;
-;	DEC R16
-;	brne FillLoop
-;	ret
-;	brne FillLoop
-;	ret
+; Bubble Sort.asm
+;
+; Created: 7/24/2022 10:01:08 PM
+; Author : sabhi
+;
+
+
+  .equ	SIZE	= 199		;data block size
+  .equ	TABLE_L	=$100		;Low SRAM address of first data element
+  .equ	TABLE_H	=$00		;High SRAM address of first data element
+                                    
+  rjmp	RESET		;Reset Handle
+
+
+  .def	A=r13		;first value to be compared
+  .def	B=r14		;second value to be compared
+  .def	cnt2=r15		;inner loop counter
+  .def	cnt1=r16		;outer loop counter
+  .def	endL=r17		;end of data array low address
+  .def	endH=r18		;end of data array high address
+
+  ; ***CODE GOES HERE AYYAPPAN***
+
+     bubble:
+                                    	mov	ZL,endL
+                                    	mov	ZH,endH		;init Z pointer
+                                    	mov	cnt2,cnt1	;counter2 <- counter1
+                                    i_loop:	ld	A,Z		;get first byte, A (n)
+                                    	ld	B,-Z		;decrement Z and get second byte, B (n-1)
+                                    	cp	A,B		;compare A with B
+                                    	brlo	L1		;if A not lower 
+                                    	st	Z,A		;    store swapped
+                                    	std	Z+1,B
+                                    L1:	dec	cnt2
+                                    	brne	i_loop		;end inner loop
+                                    	dec	cnt1
+                                    	brne	bubble		;end outer loop		
+                                    	ret
