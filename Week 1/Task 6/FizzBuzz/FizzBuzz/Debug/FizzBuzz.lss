@@ -1,10 +1,13 @@
 
-AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Tue Jul 26 16:12:43 2022
+AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Tue Jul 26 17:18:37 2022
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc'
+C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC'
+C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(92): warning: Register r16 already defined by the .DEF directive
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc'
+C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC'
                                  
-                                 ;assuming r25 is where remainder is stored.
+                                 .INCLUDE "M328PBDEF.INC"
                                  
                                  
                                  ;*************************************************************************
@@ -1549,8 +1552,47 @@ AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzB
                                  
                                  
                                  
+                                 ;*************************************************************************
+                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
+                                 ;*
+                                 ;* Number            : AVR000
+                                 ;* File Name         : m328PBdef.inc
+                                 ;* Title             : Register/Bit Definitions for the ATmega328PB
+                                 ;* Created           : 2021-07-13 10:39
+                                 ;* Version           : 1.00
+                                 ;* Support e-mail    : avr@atmel.com
+                                 ;* Target MCU        : ATmega328PB
+                                 ;*
+                                 ;* DESCRIPTION
+                                 ;* When including this file in the assembly program file, all I/O register
+                                 ;* names and I/O register bit names appearing in the data book can be used.
+                                 ;* In addition, the six registers forming the three data pointers X, Y and
+                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal
+                                 ;* SRAM is also defined
+                                 ;*
+                                 ;*************************************************************************
+                                 
+                                 #ifndef _M328PBDEF_INC_
+                                 #endif /* _M328PBDEF_INC_ */
+                                 
+                                 ; ***** END OF FILE ******************************************************
+                                 
+                                 
+                                 
+000000 c001                      RJMP start
+000001 0000                      NOP
+                                 
+                                 
+                                 .dseg; Data segment
+                                 .org 0x100;start from location 0x100
+000100                           loc : .BYTE 0x100 ;start from location 0x100
+                                 
+                                 
+                                 .cseg
+                                 
                                  
                                  ;;Notes:
+                                 ;assuming r25 is where remainder is stored.
                                  ;; 1. First check if it is divisible by 15, if so, break and return the remainder to isDiv15.
                                  ;; 2. Check if it is divisible by 5, if so, break and return to the remainder to isDiv5
                                  ;; 3. Check if it is divisible by 3, if so, break and return the remainder to isDiv3.
@@ -1564,25 +1606,35 @@ AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzB
                                  ;store value of number at register
                                  ;;pass value to isDiv15, isDiv5, isDiv3
                                  ;;
+                                 start:
+000002 2411                      	CLR r1
                                  
+                                 	;;test divider
+000003 e50a                      	LDI R16, 90 ; DIVIDEND
+000004 e013                      	LDI R17, 3  ; DIVISOR
+000005 940e 000e                 	CALL Divide  
+                                 	;READ R15 TO GET REMAINDER, WILL BE 0 IF DIVISIBLE.
+                                 	; READ R16 TO GET RESULT
+                                 
+000007 cffa                      rjmp start
                                  
                                  
                                  ;;Subroutines
                                  IsDiv3:
                                  ;r24= store r25%3
-000000 3090                      cpi r25,0 ;compare branch value to constant 0
-000001 f021                      breq fizz; branch if r25 is divisible by 3
+000008 3090                      cpi r25,0 ;compare branch value to constant 0
+000009 f021                      breq fizz; branch if r25 is divisible by 3
                                  
                                  IsDiv5:
                                  ;r24= store r25%5
-000002 3090                      cpi r25,0 ;compare branch value to constant 0
-000003 f011                      breq buzz; branch if r25 is divisible by 5
+00000a 3090                      cpi r25,0 ;compare branch value to constant 0
+00000b f011                      breq buzz; branch if r25 is divisible by 5
                                  
                                  IsDiv15:
                                  ;Numbers that are divisible by 3 and 5 are always divisible by 15
                                  ;r24= store r25%15
-000004 3090                      cpi r25,0;compare branch value to constant 0
-000005 f001                      breq fizzbuzz; branch if r25 divisible by 15(both 3 and 15)
+00000c 3090                      cpi r25,0;compare branch value to constant 0
+00000d f001                      breq fizzbuzz; branch if r25 divisible by 15(both 3 and 15)
                                  
                                  fizz:
                                  ;replace with F(0x46)
@@ -1597,7 +1649,7 @@ AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzB
                                  
                                  ;; Divider code below
                                  
-                                 .macro Divider
+                                  Divide:
                                  		;***************************************************************************
                                  		;*
                                  		;* "div8u" - 8/8 Bit Unsigned Division
@@ -1623,22 +1675,22 @@ AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzB
                                  
                                  		;***** Code
                                  
-                                 		div8u:	sub	drem8u,drem8u	;clear remainder and carry
-                                 			ldi	dcnt8u,9	;init loop counter
-                                 		d8u_1:	rol	dd8u		;shift left dividend
-                                 			dec	dcnt8u		;decrement counter
-                                 			brne	d8u_2		;if done
-                                 			ret			;    return
-                                 		d8u_2:	rol	drem8u		;shift dividend into remainder
-                                 			sub	drem8u,dv8u	;remainder = remainder - divisor
-                                 			brcc	d8u_3		;if result negative
-                                 			add	drem8u,dv8u	;    restore remainder
-                                 			clc			;    clear carry to be shifted into result
-                                 			rjmp	d8u_1		;else
-                                 		d8u_3:	sec			;    set carry to be shifted into result
-                                 			rjmp	d8u_1
+00000e 18ff                      		div8u:	sub	drem8u,drem8u	;clear remainder and carry
+00000f e029                      			ldi	dcnt8u,9	;init loop counter
+000010 1f00                      		d8u_1:	rol	dd8u		;shift left dividend
+000011 952a                      			dec	dcnt8u		;decrement counter
+000012 f409                      			brne	d8u_2		;if done
+000013 9508                      			ret			;    return
+000014 1cff                      		d8u_2:	rol	drem8u		;shift dividend into remainder
+000015 1af1                      			sub	drem8u,dv8u	;remainder = remainder - divisor
+000016 f418                      			brcc	d8u_3		;if result negative
+000017 0ef1                      			add	drem8u,dv8u	;    restore remainder
+000018 9488                      			clc			;    clear carry to be shifted into result
+000019 cff6                      			rjmp	d8u_1		;else
+00001a 9408                      		d8u_3:	sec			;    set carry to be shifted into result
+00001b cff4                      			rjmp	d8u_1
                                  
-                                 .endmacro
+                                 
 
 
 RESOURCE USE INFORMATION
@@ -1656,40 +1708,40 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega328PB" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   1 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   0 r17:   0 r18:   0 r19:   0 r20:   0 
+r13:   0 r14:   0 r15:   5 r16:   2 r17:   3 r18:   2 r19:   0 r20:   0 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   3 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 1 out of 35 (2.9%)
+Registers used: 6 out of 35 (17.1%)
 
 "ATmega328PB" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   1 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   3 brge  :   0 brhc  :   0 
+brcc  :   1 brcs  :   0 break :   0 breq  :   3 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
+brne  :   1 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   0 cbr   :   0 
+clc   :   1 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   3 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
+cpi   :   3 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :   0 lds   :   0 lpm   :   0 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :   3 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   0 pop   :   0 
-push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   0 rol   :   0 
+neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   0 pop   :   0 
+push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   4 rol   :   2 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   1 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
-sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 2 out of 113 (1.8%)
+sub   :   2 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 16 out of 113 (14.2%)
 
 "ATmega328PB" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00000c     12      0     12   32768   0.0%
-[.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
+[.cseg] 0x000000 0x000038     56      0     56   32768   0.2%
+[.dseg] 0x000100 0x000200      0    256    256    2048  12.5%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
-Assembly complete, 0 errors, 0 warnings
+Assembly complete, 0 errors, 1 warnings

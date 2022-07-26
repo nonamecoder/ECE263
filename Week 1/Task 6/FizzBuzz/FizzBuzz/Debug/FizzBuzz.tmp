@@ -10,6 +10,7 @@
  <SOURCE_FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
   <FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\Debug\FizzBuzz.obj</FILE>
@@ -22,11 +23,18 @@
   <FILE>FizzBuzz.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <IsDiv3><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>23</LINE></IsDiv3>
-  <fizz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>39</LINE></fizz>
-  <IsDiv5><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>28</LINE></IsDiv5>
-  <buzz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>42</LINE></buzz>
-  <IsDiv15><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>33</LINE></IsDiv15>
-  <fizzbuzz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>45</LINE></fizzbuzz>
+  <start><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>29</LINE></start>
+  <loc><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>8</LINE></loc>
+  <Divide><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>72</LINE></Divide>
+  <IsDiv3><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>43</LINE></IsDiv3>
+  <fizz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>59</LINE></fizz>
+  <IsDiv5><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>48</LINE></IsDiv5>
+  <buzz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>62</LINE></buzz>
+  <IsDiv15><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>53</LINE></IsDiv15>
+  <fizzbuzz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>65</LINE></fizzbuzz>
+  <div8u><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>98</LINE></div8u>
+  <d8u_1><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>100</LINE></d8u_1>
+  <d8u_2><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>104</LINE></d8u_2>
+  <d8u_3><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>110</LINE></d8u_3>
  </LABELS>
 </ASSEMBLER_INFO>

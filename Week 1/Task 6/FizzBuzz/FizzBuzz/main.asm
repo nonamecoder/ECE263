@@ -1,8 +1,18 @@
-;assuming r25 is where remainder is stored.
+.INCLUDE "M328PBDEF.INC"
+RJMP start
+NOP
 
+
+.dseg; Data segment
+.org 0x100;start from location 0x100
+loc : .BYTE 0x100 ;start from location 0x100
+
+
+.cseg
 
 
 ;;Notes:
+;assuming r25 is where remainder is stored.
 ;; 1. First check if it is divisible by 15, if so, break and return the remainder to isDiv15.
 ;; 2. Check if it is divisible by 5, if so, break and return to the remainder to isDiv5
 ;; 3. Check if it is divisible by 3, if so, break and return the remainder to isDiv3.
@@ -15,8 +25,18 @@
 ;iterate through memory here
 ;store value of number at register
 ;;pass value to isDiv15, isDiv5, isDiv3
-;;
+;; R28 AND R29 can be used for counting with Y flag
+start:
+	CLR r1
 
+	;;test divider
+	LDI R16, 90 ; DIVIDEND
+	LDI R17, 3  ; DIVISOR
+	CALL Divide  
+	;READ R15 TO GET REMAINDER, WILL BE 0 IF DIVISIBLE.
+	; READ R16 TO GET RESULT
+
+rjmp start
 
 
 ;;Subroutines
@@ -49,7 +69,7 @@ fizzbuzz:
 
 ;; Divider code below
 
-.macro Divide
+ Divide:
 		;***************************************************************************
 		;*
 		;* "div8u" - 8/8 Bit Unsigned Division
@@ -90,5 +110,5 @@ fizzbuzz:
 		d8u_3:	sec			;    set carry to be shifted into result
 			rjmp	d8u_1
 
-.endmacro
+
 		
