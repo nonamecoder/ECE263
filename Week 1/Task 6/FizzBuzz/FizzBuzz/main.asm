@@ -49,7 +49,7 @@ fizzbuzz:
 
 ;; Divider code below
 
-.macro Divider
+.macro Divide
 		;***************************************************************************
 		;*
 		;* "div8u" - 8/8 Bit Unsigned Division
