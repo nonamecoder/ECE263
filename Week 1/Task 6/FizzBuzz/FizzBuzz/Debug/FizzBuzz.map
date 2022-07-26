@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Mon Jul 25 20:56:42 2022
+AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Tue Jul 26 16:04:57 2022
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1146,8 +1146,9 @@ EQU  TIMER4_COMPAaddr 00000054
 EQU  TIMER4_COMPBaddr 00000056
 EQU  TIMER4_OVFaddr 00000058
 EQU  INT_VECTORS_SIZE 0000005a
-CSEG outloop      00000001
-CSEG inloop       00000004
-CSEG swp          0000000d
-CSEG back         00000008
-CSEG end          0000000c
+CSEG IsDiv3       00000000
+CSEG fizz         00000006
+CSEG IsDiv5       00000002
+CSEG buzz         00000006
+CSEG IsDiv15      00000004
+CSEG fizzbuzz     00000006
