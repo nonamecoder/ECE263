@@ -1,0 +1,32 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328PB"</DEVICE>
+ <WORKING_DIR>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 7\BubbleSort\BubbleSort\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 7\BubbleSort\BubbleSort\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 7\BubbleSort\BubbleSort\Debug\BubbleSort.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>BubbleSort.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>BubbleSort.map</FILE>
+  <FILE>BubbleSort.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <outloop><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 7\BubbleSort\BubbleSort\main.asm</FILE><LINE>16</LINE></outloop>
+  <inloop><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 7\BubbleSort\BubbleSort\main.asm</FILE><LINE>20</LINE></inloop>
+  <swp><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 7\BubbleSort\BubbleSort\main.asm</FILE><LINE>33</LINE></swp>
+  <back><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 7\BubbleSort\BubbleSort\main.asm</FILE><LINE>25</LINE></back>
+  <end><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 7\BubbleSort\BubbleSort\main.asm</FILE><LINE>30</LINE></end>
+ </LABELS>
+</ASSEMBLER_INFO>

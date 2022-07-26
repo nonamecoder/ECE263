@@ -1,12 +1,12 @@
 
-AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm Thu Jul 21 14:54:43 2022
+AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Mon Jul 25 20:56:42 2022
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc'
-C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm(33): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC'
+C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc'
-C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm(33): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC'
+C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC'
                                  
-                                 ;.INCLUDE "M328PBDEF.INC"
+                                 .include "M328PBDEF.INC"
                                  
                                  
                                  ;*************************************************************************
@@ -1549,38 +1549,6 @@ C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm(33): Including
                                  
                                  
                                  
-                                 ;RJMP START
-                                 ;NOP
-                                 
-                                 ;.dseg; Data segment
-                                 ;.org 0x100;start from location 0x100
-                                 ;loc : .BYTE 0x100 ;start from location 0x100
-                                 
-                                 ;.cseg
-                                 
-                                 ;start:
-                                 ;	CLR r1
-                                 ;	CALL nextlfsr
-                                 ;	ldi YH, high(loc)
-                                 ;	ldi YL, low(loc)
-                                 
-                                 ;	ST Y,R16
-                                 
-                                 ;.EQU LFSR=0x19;
-                                 .;EQU TAPS=0xB4;
-                                 ;nextlfsr:
-                                 ;	PUSH R17
-                                 ;	LDS R16, LFSR
-                                 ;	LDI R17,0
-                                 ;	SBRC R16,0
-                                 ;	LDI R17,TAPS
-                                 ;	LSR R16
-                                 ;	EOR R16,R17
-                                 ;	STS LFSR, R16
-                                 ;	POP R17
-                                 ;	RET
-                                 
-                                 .INCLUDE "M328PBDEF.INC"
                                  
                                  
                                  ;*************************************************************************
@@ -1610,50 +1578,32 @@ C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm(33): Including
                                  
                                  
                                  
-000000 c001                      RJMP START
-000001 0000                      NOP
-                                 
-                                 .dseg; Data segment
-                                 .org 0x100;start from location 0x100
-000100                           loc : .BYTE 0x100 ;start from location 0x100
-                                 
                                  .cseg
+                                 .org 0x00
                                  
-                                 start:
-000002 2411                      	CLR r1
-000003 e000                      	LDI r16, 0
-000004 e0d1                      	ldi YH, high(loc)
-000005 e0c0                      	ldi YL, low(loc)
                                  
-000006 8308                      	ST Y,R16
-                                 .equ TAPS = 0xB4
-                                 .equ lfsr=69
-                                 nextlfsr:
-000007 931f                      	push R17
-000008 9100 0045                 	lds R16, lfsr
-00000a e010                      	ldi R17,0
-00000b fd00                      	sbrc R16, 0
-00000c eb14                      	ldi R17, TAPS
-00000d 9506                      	lsr R16
-00000e 2701                      	eor R16, R17
-00000f 9300 0045                 	sts lfsr, R16
-000011 911f                      	pop r17
-000012 9508                      	ret
+000000 e039                      ldi r19,$09
+                                 outloop:
+000001 e0a0                      ldi r26,00	;loading x pointer with the value 0100
+000002 e0b1                      ldi r27,01
+000003 e029                      ldi r18,$09
+                                 inloop:
+000004 910d                      ld r16,x+	;loading the value pointed by x first to r16 and increment x
+000005 911c                      ld r17,x	;loading the value pointed by x to r17
+000006 1710                      cp r17,r16	;comparing between the first and second elements
+000007 f02c                      brlt swp	; go to swap if less than
+                                 back:
+000008 952a                      dec r18
+000009 f7d1                      brne inloop
+00000a 953a                      dec r19
+00000b f7a9                      brne outloop
+                                 end:
+00000c cfff                      rjmp end
                                  
-                                 ;FillDecrements:
-                                  ;   ldi Yh,high(loc)
-                                  ;  ldi Yl,low(loc)
-                                 ;	ldi R17,0
-                                 ;	ldi R16,0
-                                 ;	st; Y+,R16
-                                 ;	FillLoop:
-                                 ;	DEC R17
-                                 ;	st y+,R17
-                                 ;
-                                 ;	DEC R16
-                                 ;	brne FillLoop
-                                 ;	ret
-                                 ;	brne FillLoop
+                                 swp:
+00000d 930c                      st x,r16
+00000e 931e                      st -x,r17
+00000f 95a3                      inc r26
 
 
 RESOURCE USE INFORMATION
@@ -1671,40 +1621,40 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega328PB" register use summary:
-x  :   0 y  :   1 z  :   0 r0 :   0 r1 :   1 r2 :   0 r3 :   0 r4 :   0 
+x  :   4 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   7 r17:   5 r18:   0 r19:   0 r20:   0 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   1 
-r29:   1 r30:   0 r31:   0 
-Registers used: 6 out of 35 (17.1%)
+r13:   0 r14:   0 r15:   0 r16:   3 r17:   3 r18:   2 r19:   2 r20:   0 
+r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   2 r27:   1 r28:   0 
+r29:   0 r30:   0 r31:   0 
+Registers used: 7 out of 35 (20.0%)
 
 "ATmega328PB" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
-brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   1 brmi  :   0 
+brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   0 eor   :   1 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :   5 lds   :   1 lpm   :   0 lsl   :   0 
-lsr   :   1 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   0 pop   :   1 
-push  :   1 rcall :   0 ret   :   1 reti  :   0 rjmp  :   1 rol   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   0 
+cpi   :   0 cpse  :   0 dec   :   2 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   1 jmp   :   0 
+ld    :   2 ldd   :   0 ldi   :   4 lds   :   0 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   0 pop   :   0 
+push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   2 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   1 sbrs  :   0 sec   :   0 seh   :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   1 std   :   0 sts   :   1 
+sez   :   0 sleep :   0 spm   :   0 st    :   2 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 13 out of 113 (11.5%)
+Instructions used: 9 out of 113 (8.0%)
 
 "ATmega328PB" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000026     38      0     38   32768   0.1%
-[.dseg] 0x000100 0x000200      0    256    256    2048  12.5%
+[.cseg] 0x000000 0x000022     34      0     34   32768   0.1%
+[.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
 Assembly complete, 0 errors, 0 warnings

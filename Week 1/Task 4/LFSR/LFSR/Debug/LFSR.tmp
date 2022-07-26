@@ -1,19 +1,19 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.8</VERSION>
  <DEVICE>"ATmega328PB"</DEVICE>
- <WORKING_DIR>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\LFSR\LFSR\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\LFSR\LFSR\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc</FILE>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\LFSR\LFSR\Debug\LFSR.obj</FILE>
+  <FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\Debug\LFSR.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>LFSR.hex</FILE>
@@ -23,10 +23,8 @@
   <FILE>LFSR.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <START><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\LFSR\LFSR\main.asm</FILE><LINE>18</LINE></START>
-  <loc><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\LFSR\LFSR\main.asm</FILE><LINE>14</LINE></loc>
-  <nextlfsr><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\LFSR\LFSR\main.asm</FILE><LINE>28</LINE></nextlfsr>
-  <FillDecrements><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\LFSR\LFSR\main.asm</FILE><LINE>40</LINE></FillDecrements>
-  <FillLoop><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 2\LFSR\LFSR\main.asm</FILE><LINE>46</LINE></FillLoop>
+  <START><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm</FILE><LINE>43</LINE></START>
+  <loc><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm</FILE><LINE>39</LINE></loc>
+  <nextlfsr><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 4\LFSR\LFSR\main.asm</FILE><LINE>52</LINE></nextlfsr>
  </LABELS>
 </ASSEMBLER_INFO>
