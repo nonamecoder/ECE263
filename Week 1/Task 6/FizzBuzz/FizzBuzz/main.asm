@@ -12,6 +12,7 @@ loc : .BYTE 0x100 ;start from location 0x100
 
 
 ;;Notes:
+;; store value of R15 into R25
 ;; 1. First check if it is divisible by 15, if so, break and return the remainder to isDiv15.
 ;; 2. Check if it is divisible by 5, if so, break and return to the remainder to isDiv5
 ;; 3. Check if it is divisible by 3, if so, break and return the remainder to isDiv3.
@@ -26,12 +27,13 @@ loc : .BYTE 0x100 ;start from location 0x100
 ;;pass value to isDiv15, isDiv5, isDiv3
 ;; R28 AND R29 can be used for counting with Y flag
 start:
-	CLR r1
+	
 
 	;;test divider
 	LDI R16, 90 ; DIVIDEND
 	LDI R17, 3  ; DIVISOR
 	CALL Divide  
+	MOV R25, R15
 	;READ R15 TO GET REMAINDER, WILL BE 0 IF DIVISIBLE.
 	; READ R16 TO GET RESULT
 
@@ -40,17 +42,17 @@ rjmp start
 
 ;;Subroutines
 IsDiv3:
-cpi r15,0 ;compare branch value to constant 0
-breq fizz; branch if r15 is divisible by 3
+cpi r25,0 ;compare branch value to constant 0
+breq fizz; branch if r25 is divisible by 3
 
 IsDiv5:
-cpi r15,0 ;compare branch value to constant 0
-breq buzz; branch if r15 is divisible by 5
+cpi r25,0 ;compare branch value to constant 0
+breq buzz; branch if r25 is divisible by 5
 
 IsDiv15:
 ;Numbers that are divisible by 3 and 5 are always divisible by 15
-cpi r15,0;compare branch value to constant 0
-breq fizzbuzz; branch if r15 divisible by 15(both 3 and 15)
+cpi r25,0;compare branch value to constant 0
+breq fizzbuzz; branch if r25 divisible by 15(both 3 and 15)
 
 fizz:
 ;replace with F(0x46)

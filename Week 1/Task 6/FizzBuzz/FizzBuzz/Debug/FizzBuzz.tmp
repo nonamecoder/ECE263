@@ -25,16 +25,16 @@
  <LABELS>
   <start><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>29</LINE></start>
   <loc><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>8</LINE></loc>
-  <Divide><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>72</LINE></Divide>
-  <IsDiv3><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>43</LINE></IsDiv3>
-  <fizz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>59</LINE></fizz>
+  <Divide><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>73</LINE></Divide>
+  <IsDiv3><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>44</LINE></IsDiv3>
+  <fizz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>57</LINE></fizz>
   <IsDiv5><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>48</LINE></IsDiv5>
-  <buzz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>62</LINE></buzz>
-  <IsDiv15><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>53</LINE></IsDiv15>
+  <buzz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>61</LINE></buzz>
+  <IsDiv15><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>52</LINE></IsDiv15>
   <fizzbuzz><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>65</LINE></fizzbuzz>
-  <div8u><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>98</LINE></div8u>
-  <d8u_1><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>100</LINE></d8u_1>
-  <d8u_2><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>104</LINE></d8u_2>
-  <d8u_3><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>110</LINE></d8u_3>
+  <div8u><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>100</LINE></div8u>
+  <d8u_1><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>102</LINE></d8u_1>
+  <d8u_2><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>106</LINE></d8u_2>
+  <d8u_3><FILE>C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm</FILE><LINE>112</LINE></d8u_3>
  </LABELS>
 </ASSEMBLER_INFO>

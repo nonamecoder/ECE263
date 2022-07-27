@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Tue Jul 26 17:18:37 2022
+AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Tue Jul 26 20:43:44 2022
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1148,19 +1148,19 @@ EQU  TIMER4_OVFaddr 00000058
 EQU  INT_VECTORS_SIZE 0000005a
 CSEG start        00000002
 DSEG loc          00000100
-CSEG Divide       0000000e
-CSEG IsDiv3       00000008
-CSEG fizz         0000000e
-CSEG IsDiv5       0000000a
-CSEG buzz         0000000e
-CSEG IsDiv15      0000000c
-CSEG fizzbuzz     0000000e
+CSEG Divide       00000012
+CSEG IsDiv3       00000009
+CSEG fizz         0000000f
+CSEG IsDiv5       0000000b
+CSEG buzz         00000010
+CSEG IsDiv15      0000000d
+CSEG fizzbuzz     00000011
 DEF  drem8u       r15
 DEF  dres8u       r16
 DEF  dd8u         r16
 DEF  dv8u         r17
 DEF  dcnt8u       r18
-CSEG div8u        0000000e
-CSEG d8u_1        00000010
-CSEG d8u_2        00000014
-CSEG d8u_3        0000001a
+CSEG div8u        00000012
+CSEG d8u_1        00000014
+CSEG d8u_2        00000018
+CSEG d8u_3        0000001e

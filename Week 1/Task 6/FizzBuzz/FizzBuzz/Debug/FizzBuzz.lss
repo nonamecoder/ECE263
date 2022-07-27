@@ -1,9 +1,9 @@
 
-AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Tue Jul 26 17:18:37 2022
+AVRASM ver. 2.2.8  C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm Tue Jul 26 20:43:44 2022
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc'
 C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC'
-C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(92): warning: Register r16 already defined by the .DEF directive
+C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(94): warning: Register r16 already defined by the .DEF directive
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc'
 C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PBDEF.INC'
                                  
@@ -1592,7 +1592,7 @@ C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): In
                                  
                                  
                                  ;;Notes:
-                                 ;assuming r25 is where remainder is stored.
+                                 ;; store value of R15 into R25
                                  ;; 1. First check if it is divisible by 15, if so, break and return the remainder to isDiv15.
                                  ;; 2. Check if it is divisible by 5, if so, break and return to the remainder to isDiv5
                                  ;; 3. Check if it is divisible by 3, if so, break and return the remainder to isDiv3.
@@ -1605,45 +1605,46 @@ C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): In
                                  ;iterate through memory here
                                  ;store value of number at register
                                  ;;pass value to isDiv15, isDiv5, isDiv3
-                                 ;;
+                                 ;; R28 AND R29 can be used for counting with Y flag
                                  start:
 000002 2411                      	CLR r1
                                  
                                  	;;test divider
 000003 e50a                      	LDI R16, 90 ; DIVIDEND
 000004 e013                      	LDI R17, 3  ; DIVISOR
-000005 940e 000e                 	CALL Divide  
+000005 940e 0012                 	CALL Divide  
+000007 2d9f                      	MOV R25, R15
                                  	;READ R15 TO GET REMAINDER, WILL BE 0 IF DIVISIBLE.
                                  	; READ R16 TO GET RESULT
                                  
-000007 cffa                      rjmp start
+000008 cff9                      rjmp start
                                  
                                  
                                  ;;Subroutines
                                  IsDiv3:
-                                 ;r24= store r25%3
-000008 3090                      cpi r25,0 ;compare branch value to constant 0
-000009 f021                      breq fizz; branch if r25 is divisible by 3
+000009 3090                      cpi r25,0 ;compare branch value to constant 0
+00000a f021                      breq fizz; branch if r25 is divisible by 3
                                  
                                  IsDiv5:
-                                 ;r24= store r25%5
-00000a 3090                      cpi r25,0 ;compare branch value to constant 0
-00000b f011                      breq buzz; branch if r25 is divisible by 5
+00000b 3090                      cpi r25,0 ;compare branch value to constant 0
+00000c f019                      breq buzz; branch if r25 is divisible by 5
                                  
                                  IsDiv15:
                                  ;Numbers that are divisible by 3 and 5 are always divisible by 15
-                                 ;r24= store r25%15
-00000c 3090                      cpi r25,0;compare branch value to constant 0
-00000d f001                      breq fizzbuzz; branch if r25 divisible by 15(both 3 and 15)
+00000d 3090                      cpi r25,0;compare branch value to constant 0
+00000e f011                      breq fizzbuzz; branch if r25 divisible by 15(both 3 and 15)
                                  
                                  fizz:
                                  ;replace with F(0x46)
+00000f cff2                      rjmp start
                                  
                                  buzz:
                                  ;replace with b(0x62)
+000010 cff1                      rjmp start
                                  
                                  fizzbuzz:
                                  ;replace with g(0x67)
+000011 cff0                      rjmp start
                                  
                                  
                                  
@@ -1663,6 +1664,7 @@ C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): In
                                  		;* Low registers used	:1 (drem8u)
                                  		;* High registers used  :3 (dres8u/dd8u,dv8u,dcnt8u)
                                  		;*
+                                 		; Reference: http://www.rjhcoding.com/avr-asm-8bit-division.php
                                  		;***************************************************************************
                                  
                                  		;***** Subroutine Register Variables
@@ -1675,20 +1677,20 @@ C:\Users\Ayyappan\Desktop\ECE263\Week 1\Task 6\FizzBuzz\FizzBuzz\main.asm(1): In
                                  
                                  		;***** Code
                                  
-00000e 18ff                      		div8u:	sub	drem8u,drem8u	;clear remainder and carry
-00000f e029                      			ldi	dcnt8u,9	;init loop counter
-000010 1f00                      		d8u_1:	rol	dd8u		;shift left dividend
-000011 952a                      			dec	dcnt8u		;decrement counter
-000012 f409                      			brne	d8u_2		;if done
-000013 9508                      			ret			;    return
-000014 1cff                      		d8u_2:	rol	drem8u		;shift dividend into remainder
-000015 1af1                      			sub	drem8u,dv8u	;remainder = remainder - divisor
-000016 f418                      			brcc	d8u_3		;if result negative
-000017 0ef1                      			add	drem8u,dv8u	;    restore remainder
-000018 9488                      			clc			;    clear carry to be shifted into result
-000019 cff6                      			rjmp	d8u_1		;else
-00001a 9408                      		d8u_3:	sec			;    set carry to be shifted into result
-00001b cff4                      			rjmp	d8u_1
+000012 18ff                      		div8u:	sub	drem8u,drem8u	;clear remainder and carry
+000013 e029                      			ldi	dcnt8u,9	;init loop counter
+000014 1f00                      		d8u_1:	rol	dd8u		;shift left dividend
+000015 952a                      			dec	dcnt8u		;decrement counter
+000016 f409                      			brne	d8u_2		;if done
+000017 9508                      			ret			;    return
+000018 1cff                      		d8u_2:	rol	drem8u		;shift dividend into remainder
+000019 1af1                      			sub	drem8u,dv8u	;remainder = remainder - divisor
+00001a f418                      			brcc	d8u_3		;if result negative
+00001b 0ef1                      			add	drem8u,dv8u	;    restore remainder
+00001c 9488                      			clc			;    clear carry to be shifted into result
+00001d cff6                      			rjmp	d8u_1		;else
+00001e 9408                      		d8u_3:	sec			;    set carry to be shifted into result
+00001f cff4                      			rjmp	d8u_1
                                  
                                  
 
@@ -1710,8 +1712,8 @@ counted separately from r26..r31 here.
 "ATmega328PB" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   1 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   5 r16:   2 r17:   3 r18:   2 r19:   0 r20:   0 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   3 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   6 r16:   2 r17:   3 r18:   2 r19:   0 r20:   0 
+r21:   0 r22:   0 r23:   0 r24:   0 r25:   4 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 6 out of 35 (17.1%)
 
@@ -1727,20 +1729,20 @@ clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0
 cpi   :   3 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
 ld    :   0 ldd   :   0 ldi   :   3 lds   :   0 lpm   :   0 lsl   :   0 
-lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+lsr   :   0 mov   :   1 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   0 pop   :   0 
-push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   4 rol   :   2 
+push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   7 rol   :   2 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   1 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   2 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 16 out of 113 (14.2%)
+Instructions used: 17 out of 113 (15.0%)
 
 "ATmega328PB" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000038     56      0     56   32768   0.2%
+[.cseg] 0x000000 0x000040     64      0     64   32768   0.2%
 [.dseg] 0x000100 0x000200      0    256    256    2048  12.5%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
